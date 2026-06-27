@@ -24,7 +24,7 @@ export const monadTestnet = defineChain({
 })
 
 export const wagmiConfig = getDefaultConfig({
-  appName: 'PromptMarket',
+  appName: 'PromptMarkt',
   projectId: 'WALLETCONNECT_PROJECT_ID',
   chains: [monadTestnet],
   transports: {

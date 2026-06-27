@@ -37,7 +37,7 @@ const REVIEW_STEPS = [
   {
     icon: <RocketLaunch size={22} weight="fill" />,
     title: 'Go live',
-    body: 'The prompt enters the marketplace, strengthens the FluidPrompt database, and starts earning per reveal.',
+    body: 'The prompt enters the marketplace, strengthens the PromptMarkt database, and starts earning per reveal.',
   },
 ]
 
@@ -53,10 +53,10 @@ export function Sell() {
     <main className="seller-page">
       <section className="seller-hero">
         <div className="seller-hero-copy">
-          <p className="mono-label">Sell on FluidPrompt</p>
+          <p className="mono-label">Sell on PromptMarkt</p>
           <h1>Publish private prompts, earn on every reveal.</h1>
           <p>
-            External creators can submit their best private prompts to FluidPrompt. Approved prompts enter the marketplace,
+            External creators can submit their best private prompts to PromptMarkt. Approved prompts enter the marketplace,
             grow our verified prompt database, and pay the author a share whenever a buyer reveals them.
           </p>
 
@@ -135,7 +135,7 @@ export function Sell() {
           <p>
             When a submission passes review, it becomes a structured database entry with creator ownership, target tool,
             safety metadata, tags, performance history, and revenue attribution. The buyer gets a trusted prompt; the
-            author earns; FluidPrompt’s prompt library gets smarter.
+            author earns; PromptMarkt’s prompt library gets smarter.
           </p>
         </div>
 

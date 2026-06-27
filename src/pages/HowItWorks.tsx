@@ -31,7 +31,7 @@ export function HowItWorks() {
         <p className="mono-label">How it works</p>
         <h1>The reveal is the product mechanic.</h1>
         <p>
-          FluidPrompt models each prompt purchase as a small MON transaction. This demo uses local session state after a
+          PromptMarkt models each prompt purchase as a small MON transaction. This demo uses local session state after a
           successful wallet transaction; production payload security still requires a backend or encrypted delivery layer.
         </p>
       </header>

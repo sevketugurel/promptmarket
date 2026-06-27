@@ -40,9 +40,9 @@ export function Layout({
 
       <nav className="nav-glass">
         <div className="nav-inner">
-          <NavLink className="brand-mark" to="/" aria-label="FluidPrompt">
-            <span className="brand-sigil">FP</span>
-            <span>FluidPrompt</span>
+          <NavLink className="brand-mark" to="/" aria-label="PromptMarkt">
+            <span className="brand-sigil">PM</span>
+            <span>PromptMarkt</span>
           </NavLink>
 
           <button className="mobile-menu-button" onClick={() => setMenuOpen((open) => !open)} aria-label="Toggle navigation">
