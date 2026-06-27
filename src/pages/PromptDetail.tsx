@@ -45,6 +45,11 @@ export function PromptDetail({
           <h1>{prompt.title}</h1>
           <p>{prompt.description}</p>
 
+          <section className="detail-brief">
+            <p className="rail-label">Outcome</p>
+            <strong>{prompt.teaser}</strong>
+          </section>
+
           <div className="detail-stats">
             <Metric value={`${prompt.successRate}%`} label="buyer success" />
             <Metric value={formatUses(prompt.uses)} label="tracked uses" />
@@ -52,7 +57,16 @@ export function PromptDetail({
             <Metric value={formatMon(prompt.price)} label="reveal price" />
           </div>
 
-          <PayloadFrost phase={phase} secretPrompt={revealed ? prompt.secretPrompt : undefined} />
+          <section className="detail-payload">
+            <div className="payload-heading">
+              <div>
+                <p className="rail-label">Prompt payload</p>
+                <h2>{revealed ? 'Full prompt' : 'Readable preview'}</h2>
+              </div>
+              <span>{prompt.tool}</span>
+            </div>
+            <PayloadFrost phase={phase} secretPrompt={prompt.secretPrompt} />
+          </section>
 
           <div className="tag-row">
             {prompt.tags.map((tag) => (
