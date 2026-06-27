@@ -32,6 +32,10 @@ export function PerformanceTracker({ elapsed, running, promptTitle }: Performanc
         </div>
       )}
 
+      {running && elapsed === null && (
+        <p className="text-xs text-white/30 italic">Counting...</p>
+      )}
+
       {!running && elapsed !== null && (
         <div className="flex flex-col gap-1">
           <p className="text-xs text-white/50">✓ Settled in</p>
