@@ -10,6 +10,10 @@ export interface Prompt {
   authorHandle: string
   secretPrompt: string
   tag: string
+  tool: string
+  successRate: number
+  uses: number
+  tags: string[]
 }
 
 export interface PerformanceRecord {
