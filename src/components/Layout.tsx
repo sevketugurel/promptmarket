@@ -7,7 +7,7 @@ import { WalletControl } from './WalletControl'
 
 const NAV_ITEMS = [
   { to: '/marketplace', label: 'Marketplace' },
-  { to: '/creators', label: 'Creators' },
+  { to: '/generators', label: 'Generators' },
   { to: '/sell', label: 'Sell' },
   { to: '/library', label: 'Library' },
 ]

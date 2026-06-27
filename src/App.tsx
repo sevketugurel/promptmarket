@@ -5,7 +5,7 @@ import { Layout } from './components/Layout'
 import { useBuyPrompt } from './hooks/usePromptMarket'
 import { totalSpentFor } from './lib/market'
 import { CreatorProfile } from './pages/CreatorProfile'
-import { Creators } from './pages/Creators'
+import { Generators } from './pages/Generators'
 import { Home } from './pages/Home'
 import { HowItWorks } from './pages/HowItWorks'
 import { Library } from './pages/Library'
@@ -97,7 +97,7 @@ export default function App() {
           <Route index element={<Home {...sharedPromptProps} />} />
           <Route path="marketplace" element={<Marketplace searchTerm={searchTerm} {...sharedPromptProps} />} />
           <Route path="prompt/:id" element={<PromptDetail {...sharedPromptProps} />} />
-          <Route path="creators" element={<Creators />} />
+          <Route path="generators" element={<Generators />} />
           <Route path="creator/:handle" element={<CreatorProfile {...sharedPromptProps} />} />
           <Route path="library" element={<Library unlockedIds={unlockedIds} copiedId={copiedId} onCopy={handleCopy} />} />
           <Route path="sell" element={<Sell />} />

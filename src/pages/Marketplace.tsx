@@ -1,4 +1,6 @@
 import { useMemo, useState } from 'react'
+import { Sparkle } from '@phosphor-icons/react'
+import { useNavigate } from 'react-router-dom'
 import { MarketplaceFilters } from '../components/MarketplaceFilters'
 import { PromptCard } from '../components/PromptCard'
 import { filterPrompts } from '../lib/market'
@@ -19,6 +21,7 @@ export function Marketplace({
   onReveal: (prompt: Prompt) => void
   onCopy: (prompt: Prompt) => void
 }) {
+  const navigate = useNavigate()
   const [category, setCategory] = useState<PromptCategory>('All')
   const [tool, setTool] = useState('All')
   const [price, setPrice] = useState('All')
@@ -83,6 +86,19 @@ export function Marketplace({
                 <p className="mono-label">No matches</p>
                 <h2>No prompt clears that filter yet.</h2>
                 <p>Try a broader tool, category, tag, or creator search.</p>
+                <button
+                  className="generate-cta-box"
+                  onClick={() => navigate('/generators', { state: { topic: searchTerm.trim() } })}
+                >
+                  <div className="generate-cta-icon">
+                    <Sparkle size={20} weight="fill" />
+                  </div>
+                  <div className="generate-cta-copy">
+                    <strong>Bu prompt henüz yazılmadı — sen yaptır.</strong>
+                    <span>1.0 MON · Monad üzerinde, saniyeler içinde</span>
+                  </div>
+                  <Sparkle size={14} weight="fill" className="generate-cta-arrow" />
+                </button>
               </section>
             )}
           </div>
