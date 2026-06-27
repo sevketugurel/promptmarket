@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Prompt } from '../types'
+import type { Prompt } from '../types'
 import { LockedOverlay } from './LockedOverlay'
 
 interface PromptCardProps {
@@ -12,10 +12,14 @@ interface PromptCardProps {
 export function PromptCard({ prompt, isUnlocked, onUnlock, isPending }: PromptCardProps) {
   const [copied, setCopied] = useState(false)
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(prompt.secretPrompt)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(prompt.secretPrompt)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      console.error('Failed to copy prompt')
+    }
   }
 
   return (

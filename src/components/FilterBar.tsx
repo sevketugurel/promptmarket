@@ -1,4 +1,4 @@
-import { PromptCategory } from '../types'
+import type { PromptCategory } from '../types'
 
 const CATEGORIES: PromptCategory[] = ['All', 'LLMs', 'Image Generation', 'Code']
 
