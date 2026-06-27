@@ -8,6 +8,7 @@ import type { Prompt, PromptCategory, RevealPhase, SortMode } from '../types'
 
 export function Marketplace({
   searchTerm,
+  unlockedIds,
   connected,
   copiedId,
   getPhase,
@@ -15,6 +16,7 @@ export function Marketplace({
   onCopy,
 }: {
   searchTerm: string
+  unlockedIds: number[]
   connected: boolean
   copiedId: number | null
   getPhase: (prompt: Prompt) => RevealPhase
@@ -37,8 +39,8 @@ export function Marketplace({
         price,
         minimumSuccess,
         sortMode,
-      }),
-    [category, minimumSuccess, price, searchTerm, sortMode, tool]
+      }).filter((prompt) => !unlockedIds.includes(prompt.id)),
+    [category, minimumSuccess, price, searchTerm, sortMode, tool, unlockedIds]
   )
 
   return (
@@ -84,8 +86,8 @@ export function Marketplace({
             {prompts.length === 0 && (
               <section className="empty-state glass">
                 <p className="mono-label">No matches</p>
-                <h2>No prompt clears that filter yet.</h2>
-                <p>Try a broader tool, category, tag, or creator search.</p>
+                <h2>No unrevealed prompt clears that filter yet.</h2>
+                <p>Try a broader search, or open your library to use prompts you already bought.</p>
                 <button
                   className="generate-cta-box"
                   onClick={() => navigate('/generators', { state: { topic: searchTerm.trim() } })}

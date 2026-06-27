@@ -10,12 +10,14 @@ import type { Prompt, PromptCategory, RevealPhase } from '../types'
 const FEED_CATEGORIES: PromptCategory[] = ['All', 'Code', 'Marketing', 'Image Generation', 'Research']
 
 export function Home({
+  unlockedIds,
   connected,
   copiedId,
   getPhase,
   onReveal,
   onCopy,
 }: {
+  unlockedIds: number[]
   connected: boolean
   copiedId: number | null
   getPhase: (prompt: Prompt) => RevealPhase
@@ -23,17 +25,18 @@ export function Home({
   onCopy: (prompt: Prompt) => void
 }) {
   const [selectedCategory, setSelectedCategory] = useState<PromptCategory>('All')
+  const availablePrompts = useMemo(() => PROMPTS.filter((prompt) => !unlockedIds.includes(prompt.id)), [unlockedIds])
 
   const feedPrompts = useMemo(
     () =>
-      [...PROMPTS]
+      [...availablePrompts]
         .filter((prompt) => selectedCategory === 'All' || prompt.category === selectedCategory)
         .sort(sortHomeFeed),
-    [selectedCategory]
+    [availablePrompts, selectedCategory]
   )
 
-  const totalUses = PROMPTS.reduce((sum, prompt) => sum + prompt.uses, 0)
-  const trendingCount = PROMPTS.filter((prompt) => prompt.trendingRank).length
+  const totalUses = availablePrompts.reduce((sum, prompt) => sum + prompt.uses, 0)
+  const trendingCount = availablePrompts.filter((prompt) => prompt.trendingRank).length
 
   return (
     <main className="home-page">
@@ -48,7 +51,7 @@ export function Home({
         </div>
 
         <aside className="feed-signal" aria-label="Marketplace signal">
-          <FeedStat icon={<Sparkle size={17} weight="fill" />} value={PROMPTS.length.toString()} label="curated prompts" />
+          <FeedStat icon={<Sparkle size={17} weight="fill" />} value={availablePrompts.length.toString()} label="available prompts" />
           <FeedStat icon={<TrendUp size={17} weight="fill" />} value={formatUses(totalUses)} label="tracked uses" />
           <FeedStat icon={<Fire size={17} weight="fill" />} value={trendingCount.toString()} label="trending now" />
         </aside>
@@ -77,7 +80,11 @@ export function Home({
               onClick={() => setSelectedCategory(category)}
             >
               {category}
-              <span>{category === 'All' ? PROMPTS.length : PROMPTS.filter((prompt) => prompt.category === category).length}</span>
+              <span>
+                {category === 'All'
+                  ? availablePrompts.length
+                  : availablePrompts.filter((prompt) => prompt.category === category).length}
+              </span>
             </button>
           ))}
         </div>
@@ -94,6 +101,14 @@ export function Home({
               onCopy={() => onCopy(prompt)}
             />
           ))}
+
+          {feedPrompts.length === 0 && (
+            <section className="empty-state glass">
+              <p className="mono-label">All caught up</p>
+              <h2>No unrevealed prompts in this view.</h2>
+              <p>Purchased prompts stay in your library instead of the marketplace feed.</p>
+            </section>
+          )}
         </div>
       </section>
 

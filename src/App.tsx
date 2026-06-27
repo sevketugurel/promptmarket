@@ -94,8 +94,8 @@ export default function App() {
             />
           }
         >
-          <Route index element={<Home {...sharedPromptProps} />} />
-          <Route path="marketplace" element={<Marketplace searchTerm={searchTerm} {...sharedPromptProps} />} />
+          <Route index element={<Home unlockedIds={unlockedIds} {...sharedPromptProps} />} />
+          <Route path="marketplace" element={<Marketplace searchTerm={searchTerm} unlockedIds={unlockedIds} {...sharedPromptProps} />} />
           <Route path="prompt/:id" element={<PromptDetail {...sharedPromptProps} />} />
           <Route path="generators" element={<Generators />} />
           <Route path="creator/:handle" element={<CreatorProfile {...sharedPromptProps} />} />
