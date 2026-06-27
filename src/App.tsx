@@ -47,6 +47,7 @@ export default function App() {
       setUnlockedIds(prev => [...prev, id])
     } finally {
       setPendingId(null)
+      setActivePromptTitle(null)
     }
   }, [isConnected, buy, start, stop])
 
