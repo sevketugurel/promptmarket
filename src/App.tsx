@@ -15,12 +15,14 @@ import { PromptDetail } from './pages/PromptDetail'
 import { Sell } from './pages/Sell'
 import type { Prompt, RevealPhase } from './types'
 
+const MOCK_UNLOCKED_PROMPT_IDS = [4, 1, 0]
+
 export default function App() {
   const { isConnected } = useAccount()
   const { buy, isPending } = useBuyPrompt()
 
   const [searchTerm, setSearchTerm] = useState('')
-  const [unlockedIds, setUnlockedIds] = useState<number[]>([])
+  const [unlockedIds, setUnlockedIds] = useState<number[]>(MOCK_UNLOCKED_PROMPT_IDS)
   const [pendingId, setPendingId] = useState<number | null>(null)
   const [failedId, setFailedId] = useState<number | null>(null)
   const [copiedId, setCopiedId] = useState<number | null>(null)
