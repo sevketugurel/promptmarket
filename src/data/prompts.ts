@@ -1,4 +1,4 @@
-import { Prompt } from '../types'
+import type { Prompt } from '../types'
 
 export const PROMPTS: Prompt[] = [
   {
