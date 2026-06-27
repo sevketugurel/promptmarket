@@ -45,7 +45,7 @@ export function PromptCard({
         <p>{prompt.description}</p>
       </Link>
 
-      <PayloadFrost phase={phase} secretPrompt={isRevealed ? prompt.secretPrompt : undefined} />
+      <PayloadFrost phase={phase} secretPrompt={prompt.secretPrompt} />
 
       <div className="tag-row">
         {prompt.tags.map((tag) => (
